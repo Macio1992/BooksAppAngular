@@ -1,0 +1,31 @@
+$font: Helvetica;
+
+* {
+    font-family: $font;
+}
+
+div.book {
+    overflow: hidden;
+    margin-top: 20px;
+    display: inline-block;
+    div.cover{
+        float: left;
+        margin-right: 20px;
+    }
+    div.info{
+        float: left;
+        h2{
+            margin: 0;
+            padding: 10px 0;
+        }
+        h3{
+            margin: 0;
+        }
+        p {
+            font-weight: bold;
+            span {
+                font-weight: normal;
+            }
+        }
+    }
+}

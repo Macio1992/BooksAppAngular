@@ -1,0 +1,10 @@
+<form [formGroup] = "searchForm" (ngSubmit) = "searchTerm(searchForm.value)">
+    <input type="text" formControlName="term">
+    <input type="submit" value="search">
+</form>
+
+<div id="books">
+    <book [book] = "book" *ngFor="let book of pagedItems"></book>
+</div>
+
+<pagination [pager] = "pager"></pagination>
