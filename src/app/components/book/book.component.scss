@@ -8,15 +8,17 @@ div.book {
     overflow: hidden;
     margin-top: 20px;
     display: inline-block;
-    div.cover{
-        float: left;
-        margin-right: 20px;
-    }
+    width: 33%;
+        img{
+            float: left;
+            width: 20%;
+            margin-right: 20px;
+        }
     div.info{
         float: left;
         h2{
             margin: 0;
-            padding: 10px 0;
+            padding: 10px 10px 10px 0;
         }
         h3{
             margin: 0;
@@ -27,5 +29,13 @@ div.book {
                 font-weight: normal;
             }
         }
+    }
+    a{
+        text-decoration: none;
+        background: orange;
+        color: white;
+        padding: 10px;
+        display: block;
+        float: left;
     }
 }

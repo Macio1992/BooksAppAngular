@@ -3,22 +3,23 @@ import * as _ from 'underscore';
 
 @Injectable()
 export class PaginationService {
+    
+    size: number = 6;
 
-    pageSize: number = 10;
+    getPager(totalItems: number, currentPage: number = 1, pageSize: number = this.size) {
 
-    getPager(totalItems: number, currentPage: number = 1, pageSize: number = this.pageSize) {
         let totalPages = Math.ceil(totalItems / pageSize);
-
         let startPage: number, endPage: number;
-        if (totalPages <= this.pageSize) {
+
+        if (totalPages <= 10) {
             startPage = 1;
             endPage = totalPages;
         } else {
             if (currentPage <= 3) {
                 startPage = 1;
-                endPage = this.pageSize;
+                endPage = this.size;
             } else if (currentPage + 2 >= totalPages) {
-                startPage = totalPages - (this.pageSize-1);
+                startPage = totalPages - (this.size-1);
                 endPage = totalPages;
             } else {
                 startPage = currentPage - 3;
@@ -28,9 +29,9 @@ export class PaginationService {
 
         let startIndex = (currentPage - 1) * pageSize;
         let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
-
+ 
         let pages = _.range(startPage, endPage + 1);
-
+ 
         return {
             totalItems: totalItems,
             currentPage: currentPage,
@@ -42,5 +43,7 @@ export class PaginationService {
             endIndex: endIndex,
             pages: pages
         };
+
     }
+
 }
