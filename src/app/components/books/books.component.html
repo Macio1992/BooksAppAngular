@@ -3,4 +3,4 @@
     <input (keyup) = "searchTerm$.next($event.target.value)" placeholder="szukaj ..." formControlName = "term">
 </form>
 
-<pagination *ngIf="books" [allItems] = "books" #pagination></pagination>
+<pagination *ngIf="books" [allBooks] = "books" #pagination></pagination>

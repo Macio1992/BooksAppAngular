@@ -5,6 +5,7 @@ import { routing } from './app.routes';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 import { AppComponent } from './app.component';
 import { BooksComponent } from '../app/components/books/books.component';
 import { BookComponent } from '../app/components/book/book.component';
@@ -23,7 +24,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     routing,
     HttpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

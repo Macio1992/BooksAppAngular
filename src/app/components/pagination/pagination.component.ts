@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PaginationService } from './pagination.service';
+import { Book } from '../../models/book';
 
 @Component({
     selector: 'pagination',
@@ -10,9 +11,9 @@ import { PaginationService } from './pagination.service';
 
 export class PaginationComponent implements OnInit{
     
-    @Input() allItems: any[];
+    @Input() allBooks: Book[];
     pager: any = {};
-    pagedItems: any[];
+    pagedBooks: Book[];
 
     constructor(private _service: PaginationService){}
 
@@ -31,9 +32,8 @@ export class PaginationComponent implements OnInit{
             return;
         }
  
-        this.pager = this._service.getPager(this.allItems.length, page);
- 
-        this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        this.pager = this._service.getPager(this.allBooks.length, page);
+        this.pagedBooks = this.allBooks.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
 
 }

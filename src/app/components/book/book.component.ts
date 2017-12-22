@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Book } from '../../models/book';
 
 @Component({
     selector: 'book',
@@ -8,7 +9,6 @@ import { Component, Input } from '@angular/core';
 
 export class BookComponent {
 
-    @Input() book: any;
-
+    @Input() book: Book;
 
 }

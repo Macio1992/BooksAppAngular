@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BooksService } from './books.service';
 import { Subject } from 'rxjs/Subject';
 import { PaginationComponent } from '../pagination/pagination.component';
@@ -13,7 +13,7 @@ import { Book } from '../../models/book';
     providers: [ BooksService ]
 })
 
-export class BooksComponent implements OnInit {
+export class BooksComponent {
 
     books: Book[];
     results: Object;
@@ -32,15 +32,6 @@ export class BooksComponent implements OnInit {
             console.dir(books);
         });
 
-    }
-
-    ngOnInit(): void {
-        this._service.getBooks('matematyka').subscribe(
-            books => {
-                console.dir(books);
-                // this.books = books;
-            }
-        );
     }
 
 }
