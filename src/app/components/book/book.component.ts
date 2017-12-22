@@ -8,7 +8,5 @@ import { Book } from '../../models/book';
 })
 
 export class BookComponent {
-
     @Input() book: Book;
-
 }

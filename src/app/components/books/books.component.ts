@@ -3,7 +3,6 @@ import { BooksService } from './books.service';
 import { Subject } from 'rxjs/Subject';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-
 import { Book } from '../../models/book';
 
 @Component({
