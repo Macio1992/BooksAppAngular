@@ -1,16 +1,6 @@
-<!-- <form [formGroup] = "searchForm" (ngSubmit) = "searchTerm(searchForm.value)">
-    <input type="text" formControlName="term">
-    <div *ngIf="searchForm.get('term').hasError('required') && searchForm.get('term').dirty" class="error">
-        <span>wpisz frazę do szukania</span>
-    </div>
-    <div *ngIf="searchForm.get('term').hasError('minLength') && searchForm.get('term').hasError('maxLength') && searchForm.get('term').dirty" class="error">
-        <span>wpisana fraza musi być</span>
-    </div>
-    <input type="submit" value="szukaj" [disabled] = "!searchForm.valid">
-</form> -->
+<form id="search" [formGroup] = "searchForm" (ngSubmit)="search(searchForm.value)">
+    <h2>Szukaj książki</h2>
+    <input (keyup) = "searchTerm$.next($event.target.value)" placeholder="szukaj ..." formControlName = "term">
+</form>
 
-<div id="search">
-    <input (keyup) = "searchTerm$.next($event.target.value)" placeholder="szukaj ...">
-</div>
-
-<pagination *ngIf="books" [allItems] = "books"></pagination>
+<pagination *ngIf="books" [allItems] = "books" #pagination></pagination>

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from './books.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
+import { PaginationComponent } from '../pagination/pagination.component';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+
+import { Book } from '../../models/book';
 
 @Component({
     selector: 'books',
@@ -12,42 +15,32 @@ import { Subject } from 'rxjs/Subject';
 
 export class BooksComponent implements OnInit {
 
-    books: any[];
-    searchForm: FormGroup;
+    books: Book[];
     results: Object;
     searchTerm$ = new Subject<string>();
+    searchForm: FormGroup;
 
     constructor(private _service: BooksService, private fb: FormBuilder){
         
+        this.searchForm = fb.group({
+            "term": ['', Validators.compose([Validators.required, Validators.minLength(4)])]
+        });
+
         this._service.search(this.searchTerm$).subscribe(books => {
-            // this.books = books;
+            this.books = books;
             console.log('books');
             console.dir(books);
         });
 
-        this.searchForm = fb.group({
-            term: ['', Validators.compose([ Validators.required, Validators.minLength(3), Validators.maxLength(12) ])]
-        });
     }
 
     ngOnInit(): void {
-
-        
-
-    }
-
-    searchTerm(form: any): void {
-        this._service.getBooks(form.term).subscribe(
+        this._service.getBooks('matematyka').subscribe(
             books => {
-                // this.books = books;
-                console.log('books:');
                 console.dir(books);
-            },
-            error => {
-                console.log('error');
-                console.dir(error);
+                // this.books = books;
             }
-        )
+        );
     }
 
 }

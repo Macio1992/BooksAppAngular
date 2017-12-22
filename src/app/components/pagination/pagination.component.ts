@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PaginationService } from './pagination.service';
 
 @Component({
@@ -18,6 +18,12 @@ export class PaginationComponent implements OnInit{
 
     ngOnInit(): void {
         this.setPage(1);
+    }
+
+    ngOnChanges(changes: SimpleChanges){
+        if(changes['allItems']){
+            this.setPage(1);
+        }
     }
 
     setPage(page: number): void {

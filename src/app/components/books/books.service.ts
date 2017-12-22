@@ -8,6 +8,8 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
+import { Book } from '../../models/book';
+
 @Injectable()
 export class BooksService{
 
@@ -19,8 +21,9 @@ export class BooksService{
         return terms.debounceTime(400).distinctUntilChanged().switchMap(term => this.getBooks(term));
     }
 
-    getBooks(term): Observable<any>{
-        return this.http.get(`${this.url}/search?query=${term}`)
+    getBooks(term): Observable<Book[]>{
+
+        return this.http.get(`${this.url}/search?query=${encodeURIComponent(term)}`)
         .map((response: Response) => response.json())
         .catch((error: any) => Observable.throw(error.json() || 'Server output'));
     }

@@ -1,9 +1,16 @@
-$font: Helvetica;
+$font: 'Roboto', sans-serif;
 
-div#search {
+form#search {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: white;
+    padding: 20px 0 30px 0;
+
+    h2{
+        font-family: $font;
+        font-weight: normal;
+    }
 
     input {
         outline: 0;
@@ -11,7 +18,7 @@ div#search {
         font-family: $font;
         border-bottom: 1px solid gray;
         color: black;
-        padding: 20px;
-        font-size: 20px;
+        padding: 0 0 5px 10px;
+        font-size: 18px;
     }
 }

@@ -1,4 +1,8 @@
-<book [book] = "book" *ngFor="let book of pagedItems"></book>
+
+<div id="books">
+	<book [book] = "book" *ngFor="let book of pagedItems"></book>
+</div>
+
 <div id="pagination">
 	<ul *ngIf="pager.pages && pager.pages.length">
 		<li [ngClass]="{disabled:pager.currentPage === 1}">
@@ -7,7 +11,7 @@
 		<li [ngClass]="{disabled:pager.currentPage === 1}">
 			<a (click)="setPage(pager.currentPage - 1)">Previous</a>
 		</li>
-		<li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+		<li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page">
 			<a (click)="setPage(page)">{{page}}</a>
 		</li>
 		<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
