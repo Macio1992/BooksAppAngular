@@ -1,6 +1,9 @@
-<form id="search" [formGroup] = "searchForm" (ngSubmit)="search(searchForm.value)">
+<form id="search" [formGroup] = "searchForm">
     <h2>Szukaj książki</h2>
-    <input (keyup) = "searchTerm$.next($event.target.value)" placeholder="szukaj ..." formControlName = "term">
+    <input type="text" placeholder="szukaj ..." formControlName="term">
+    <div *ngIf="searchForm.get('term').hasError('required') && searchForm.get('term').dirty" class="error">wpisz hasło do wyszukania</div>
+    <div *ngIf="searchForm.get('term').hasError('minlength')" class="error">hasło za krótkie, minimalnie 3 znaki</div>
+    <div *ngIf="searchForm.get('term').hasError('maxlength')" class="error">hasło za długie, maksymalnie 12 znaków</div>
 </form>
 
 <pagination *ngIf="books" [allBooks] = "books" #pagination></pagination>

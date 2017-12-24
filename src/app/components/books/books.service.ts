@@ -18,7 +18,7 @@ export class BooksService{
     constructor(private http: Http){}
 
     search(terms: Observable<string>){
-        return terms.debounceTime(300).distinctUntilChanged().switchMap(term => this.getBooks(term));
+        return terms.debounceTime(200).distinctUntilChanged().switchMap(term => this.getBooks(term));
     }
 
     getBooks(term): Observable<Book[]>{

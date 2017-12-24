@@ -9,4 +9,4 @@ export interface Book {
     title: string,
     type: string,
     url: string
-}
+};

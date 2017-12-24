@@ -22,16 +22,12 @@ export class PaginationComponent implements OnInit{
     }
 
     ngOnChanges(changes: SimpleChanges){
-        if(changes['allItems']){
+        if(changes['allBooks']){
             this.setPage(1);
         }
     }
 
     setPage(page: number): void {
-        if (page < 1 || page > this.pager.totalPages) {
-            return;
-        }
- 
         this.pager = this._service.getPager(this.allBooks.length, page);
         this.pagedBooks = this.allBooks.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }

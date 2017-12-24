@@ -5,6 +5,9 @@ import { PaginationComponent } from '../pagination/pagination.component';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Book } from '../../models/book';
 
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+
 @Component({
     selector: 'books',
     templateUrl: './books.component.html',
@@ -22,15 +25,16 @@ export class BooksComponent {
     constructor(private _service: BooksService, private fb: FormBuilder){
         
         this.searchForm = fb.group({
-            "term": ['', Validators.compose([Validators.required, Validators.minLength(4)])]
+            "term": ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(12)])]
+        });
+
+        this.searchForm.valueChanges.subscribe(form => {
+            this.searchTerm$.next(form.term);
         });
 
         this._service.search(this.searchTerm$).subscribe(books => {
             this.books = books;
-            console.log('books');
-            console.dir(books);
         });
-
     }
 
 }
